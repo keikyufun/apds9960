@@ -1,0 +1,11 @@
+{
+  "name": "apds9960",
+  "version": "0.0.1",
+  "description": "APDS-9960 RGB + Clear + Proximity sensor",
+  "dependencies": {
+    "core": "*"
+  },
+  "files": [
+    "main.ts"
+  ]
+}
