@@ -1,4 +1,3 @@
-# apds9960
 # APDS-9960（micro:bit 用拡張）
 
 APDS‑9960 の RGB・Clear・近接・ジェスチャーを micro:bit で扱うための拡張機能です。  
