@@ -1,5 +1,39 @@
+//% color=#AA278D icon="\uf0eb" block="APDS9960"
 namespace APDS9960 {
     const ADDR = 0x39
+
+    //% block="APDS9960 初期化"
+    export function init() {
+        writeReg(0x80, 0x03)
+        writeReg(0x81, 0xFF)
+        writeReg(0x8F, 0x01)
+        writeReg(0x83, 0x07)
+    }
+
+    //% block="APDS9960 Clear値"
+    export function clear(): number {
+        return read16(0x94)
+    }
+
+    //% block="APDS9960 赤"
+    export function red(): number {
+        return read16(0x96)
+    }
+
+    //% block="APDS9960 緑"
+    export function green(): number {
+        return read16(0x98)
+    }
+
+    //% block="APDS9960 青"
+    export function blue(): number {
+        return read16(0x9A)
+    }
+
+    //% block="APDS9960 近接値"
+    export function proximity(): number {
+        return readReg(0x9C)
+    }
 
     function writeReg(reg: number, val: number) {
         const buf = pins.createBuffer(2)
@@ -17,32 +51,5 @@ namespace APDS9960 {
         let low = readReg(lsb)
         let high = readReg(lsb + 1)
         return (high << 8) | low
-    }
-
-    export function init() {
-        writeReg(0x80, 0x03)
-        writeReg(0x81, 0xFF)
-        writeReg(0x8F, 0x01)
-        writeReg(0x83, 0x07)
-    }
-
-    export function clear(): number {
-        return read16(0x94)
-    }
-
-    export function red(): number {
-        return read16(0x96)
-    }
-
-    export function green(): number {
-        return read16(0x98)
-    }
-
-    export function blue(): number {
-        return read16(0x9A)
-    }
-
-    export function proximity(): number {
-        return readReg(0x9C)
     }
 }
