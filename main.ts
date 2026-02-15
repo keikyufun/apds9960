@@ -52,7 +52,10 @@ namespace APDS9960 {
         let l = readReg(0xFE)
         let r = readReg(0xFF)
 
-        let maxVal = Math.max(u, d, l, r)
+        let ud = Math.max(u, d)
+        let lr = Math.max(l, r)
+        let maxVal = Math.max(ud, lr)
+
         if (maxVal < 30) return "none"
 
         if (maxVal == u) return "up"
@@ -109,3 +112,4 @@ namespace APDS9960 {
         return (high << 8) | low
     }
 }
+
